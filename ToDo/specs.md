@@ -15,3 +15,4 @@ Technology
 - Tasks and the theme choice are stored in the browser's localStorage so they survive a reload. Tasks saved by older versions (without priority or due date) are given defaults on load.
 - Theme is a data-theme attribute on the html element, with colours defined as CSS variables.
 - Run by opening index.html in a browser.
+- Hosted on Vercel as a static site. The repo-root vercel.json serves the ToDo folder with no build, and every push to main redeploys.
