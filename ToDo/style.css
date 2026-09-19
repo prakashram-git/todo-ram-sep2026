@@ -10,6 +10,7 @@
   --low: #188038;
   --overdue: #d93025;
   --accent: #FDB913;
+  --heading: #e8710a;
   --toast-bg: #323232;
   --toast-text: #fff;
   color-scheme: light;
@@ -27,6 +28,7 @@
   --low: #81c995;
   --overdue: #f28b82;
   --accent: #FFD700;
+  --heading: #ff9a3c;
   --toast-bg: #e8e8e8;
   --toast-text: #121212;
   color-scheme: dark;
@@ -62,7 +64,7 @@ header {
 
 h1 {
   margin: 0 0 1rem;
-  color: #1a73e8;
+  color: var(--heading);
 }
 
 #add-form {
