@@ -1,0 +1,278 @@
+:root {
+  --bg: #f4f4f4;
+  --card: #fff;
+  --text: #222;
+  --muted: #888;
+  --border: #eee;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --high: #d93025;
+  --medium: #e8710a;
+  --low: #188038;
+  --overdue: #d93025;
+  --accent: #FDB913;
+  --toast-bg: #323232;
+  --toast-text: #fff;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #e8e8e8;
+  --muted: #8a8a8a;
+  --border: #333;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --high: #f28b82;
+  --medium: #fdba74;
+  --low: #81c995;
+  --overdue: #f28b82;
+  --accent: #FFD700;
+  --toast-bg: #e8e8e8;
+  --toast-text: #121212;
+  color-scheme: dark;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 2rem 1rem;
+}
+
+main {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px var(--shadow);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  color: #1a73e8;
+}
+
+#add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-main {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#new-task {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.form-secondary {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+button,
+select,
+input[type="date"] {
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.delete-btn {
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.delete-btn:hover {
+  opacity: 1;
+  color: var(--overdue);
+}
+
+#theme-toggle {
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.tab {
+  padding: 0.25rem 0.7rem;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.tab.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+#count {
+  flex: 1;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+#clear-done {
+  padding: 0.25rem 0.7rem;
+  font-size: 0.9rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+li .task-main {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+li .task-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+li.empty {
+  color: var(--muted);
+  justify-content: center;
+}
+
+li span.text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  cursor: text;
+}
+
+li input.edit {
+  flex: 1;
+  min-width: 0;
+  padding: 0.25rem 0.4rem;
+  font-size: 1rem;
+}
+
+li.done span.text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+li input.due {
+  padding: 0.2rem 0.4rem;
+  font-size: 0.85rem;
+  flex: 0 0 auto;
+  max-width: 120px;
+}
+
+li.overdue input.due {
+  color: var(--overdue);
+  font-weight: 600;
+}
+
+li .due-separator {
+  display: none;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.badge option {
+  color: var(--text);
+  background: var(--card);
+}
+
+.badge.high { color: var(--high); }
+.badge.medium { color: var(--medium); }
+.badge.low { color: var(--low); }
+
+li.done .badge {
+  opacity: 0.5;
+}
+
+.toast {
+  position: sticky;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--toast-bg);
+  color: var(--toast-text);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.toast button {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}

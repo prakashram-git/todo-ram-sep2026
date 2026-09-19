@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To Do</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Set theme before first paint to avoid a light-mode flash
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('todo-theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>To Do</h1>
+      <button id="theme-toggle" type="button"></button>
+    </header>
+    <form id="add-form">
+      <div class="form-main">
+        <input id="new-task" type="text" placeholder="What needs doing?" autocomplete="off" autofocus>
+        <button type="submit">Add</button>
+      </div>
+      <div class="form-secondary">
+        <select id="new-priority" aria-label="Priority">
+          <option value="high">High</option>
+          <option value="medium" selected>Medium</option>
+          <option value="low">Low</option>
+        </select>
+        <input id="new-due" type="date" aria-label="Due date">
+      </div>
+    </form>
+    <div class="toolbar">
+      <div class="tabs" role="group" aria-label="Filter tasks">
+        <button type="button" class="tab active" data-filter="all">All</button>
+        <button type="button" class="tab" data-filter="active">Active</button>
+        <button type="button" class="tab" data-filter="done">Done</button>
+      </div>
+      <span id="count"></span>
+      <button id="clear-done" type="button" hidden>Clear completed</button>
+    </div>
+    <ul id="task-list"></ul>
+    <div id="toast" class="toast" role="status" hidden>
+      <span id="toast-msg"></span>
+      <button id="undo" type="button">Undo</button>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
